@@ -1,0 +1,7 @@
+C:\Users\Utente\source\repos\Parcheggio\bin\Debug\Parcheggio.exe.config
+C:\Users\Utente\source\repos\Parcheggio\bin\Debug\Parcheggio.exe
+C:\Users\Utente\source\repos\Parcheggio\bin\Debug\Parcheggio.pdb
+C:\Users\Utente\source\repos\Parcheggio\obj\Debug\Parcheggio.csproj.AssemblyReference.cache
+C:\Users\Utente\source\repos\Parcheggio\obj\Debug\Parcheggio.csproj.CoreCompileInputs.cache
+C:\Users\Utente\source\repos\Parcheggio\obj\Debug\Parcheggio.exe
+C:\Users\Utente\source\repos\Parcheggio\obj\Debug\Parcheggio.pdb
