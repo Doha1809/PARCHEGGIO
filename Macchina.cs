@@ -22,7 +22,7 @@ namespace Parcheggio
         }
         public override string ToString()
         {
-            return "La macchina con la targa: "+Targa +"e marca: "+ Marca+" ";
+            return "La macchina con la targa: "+Targa +" e marca: "+ Marca+" ";
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Parcheggio
         }
         public void parking(Macchina car)
         {
+            entrata.Entrare( car);
             entrata.Parcheggiare(car);
             uscita.lascio(car);
         }

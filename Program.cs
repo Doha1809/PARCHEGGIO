@@ -12,13 +12,14 @@ namespace Parcheggio
 
         static void Main(string[] args)
         {
-            Park parcheggio= new Park(10,4,4);
+            Park parcheggio= new Park(2,4,4);
             Semaphore semaforo= new Semaphore(parcheggio.NPosti,parcheggio.NPosti);
+            object lockPosti = new object();
             List<Macchina> cars = cars = new List<Macchina>();
             for(int i=0;i<parcheggio.NEntrate;i++)
             {
                 Entrata enter = new Entrata(i.ToString());
-                enter.Semaforo(semaforo, cars);
+                enter.Semaforo(semaforo, cars, lockPosti);
                 parcheggio.enter.Add(enter);
 
             }
@@ -41,13 +42,26 @@ namespace Parcheggio
             car2.thread = new Thread(() => pacchetti2.parking(car2));
             car2.thread.Start();
             pacchetti3.Entrata_e_Uscita(parcheggio.enter[3], parcheggio.uscite[3]);
-            Macchina car3 = new Macchina(200, "126", "ferrari");
+           /* Macchina car3 = new Macchina(200, "126", "ferrari");
             car3.thread = new Thread(() =>pacchetti3.parking(car3));
             car3.thread.Start();
 
+           /* pacchetti4.Entrata_e_Uscita(parcheggio.enter[0], parcheggio.uscite[0]);
             Macchina car4 = new Macchina(200, "127", "ferrari");
-            car4.thread = new Thread(() => pacchetti3.parking(car4));
-            car4.thread.Start();
+            car4.thread = new Thread(() => pacchetti4.parking(car4));
+            car4.thread.Start();*/
+           
+          
+           
+           
+            Macchina car10 = new Macchina(200, "12700", "ferrari");
+            car10.thread = new Thread(() => pacchetti3.parking(car10));
+            Macchina car11 = new Macchina(200, "1", "ferrari");
+            car11.thread = new Thread(() => pacchetti2.parking(car11));
+
+           
+            car10.thread.Start();
+            car11.thread.Start();
 
             Console.ReadKey();
         }

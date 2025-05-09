@@ -12,23 +12,39 @@ namespace Parcheggio
         public string id;
         public Semaphore semaforo;
         List<Macchina> cars;
+        object lockPosti = new object();
         public Entrata(string id)
         {
             this.id = id;
+
         }
-        public void Semaforo(Semaphore sema, List<Macchina> cars)
+        public void Semaforo(Semaphore sema, List<Macchina> cars, object lockposti)
         {
             semaforo = sema;
             this.cars = cars;
+            this.lockPosti = lockposti;
         }
-        public void Parcheggiare(Macchina car)
+        Semaphore semaforo_entrata = new Semaphore(1, 1);
+        public void Entrare( Macchina car)
+        {
+            Console.WriteLine($"{car.ToString()}VOGLIO ENTRARE");
+            semaforo_entrata.WaitOne();
+            Console.WriteLine($"{car.ToString()}SONO ENTRATA OLEEE");
+
+        }
+
+       public void Parcheggiare(Macchina car)
         {
 
             Console.WriteLine($"{car.ToString()}:VOGLIO PARCHEGGIARE. SONO ALL'ENTRATA DI ID {id}");
             semaforo.WaitOne();
-            Entrato(car);
-            Console.WriteLine($"{car.ToString()}:SONO ENTRATO DALL'ENTRATA {id}");
-            Thread.Sleep(car.Tempo_Sosta);
+            semaforo_entrata.Release();
+            lock (lockPosti)
+            {
+                Entrato(car);
+                Console.WriteLine($"{car.ToString()}:HO PARCHEGGIO DALL'ENTRATA {id}");
+            }
+                Thread.Sleep(car.Tempo_Sosta);
            
         }
         private void Entrato(Macchina car)

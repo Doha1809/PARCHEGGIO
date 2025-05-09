@@ -28,6 +28,7 @@ namespace Parcheggio
         }
 
        public List<Entrata> enter;
+        public List<Semaphore> semafori_entrata;
         public List<Uscita> uscite;
         public Park(int nPosti, int nEntrate, int nUscite)
         {
@@ -35,10 +36,12 @@ namespace Parcheggio
             this.nEntrate = nEntrate;
             this.nUscite = nUscite;
            enter= new List<Entrata>();
+            semafori_entrata= new List<Semaphore>();    
             uscite= new List<Uscita> ();       
            
         }
-     
+       
+
 
     }
 }
